@@ -1,0 +1,65 @@
+import React, { useState } from "react";
+import Loader from "./Loader";
+import { Document, Page, pdfjs } from "react-pdf";
+import ControlPanel from "./ControlPanel";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
+const PDFReader = ({ documento }) => {
+  const [scale, setScale] = useState(1.0);
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const file = `/docs/${documento}.pdf`;
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+    setIsLoading(false);
+  }
+
+  return (
+    <div>
+      <Loader isLoading={isLoading} />
+      <section
+        id="pdf-section"
+        className="d-flex flex-column align-items-center w-100"
+      >
+        <ControlPanel
+          /* sx={styles.controlPanel} */
+          sx={{
+            fontSize: "16px",
+            color: "black",
+            backgroundColor: "white",
+            borderRadius: "5px",
+          }}
+          scale={scale}
+          setScale={setScale}
+          numPages={numPages}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+          file={file}
+        />
+        <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+          <Page pageNumber={pageNumber} scale={scale} />
+        </Document>
+      </section>
+    </div>
+  );
+};
+
+export default PDFReader;
+
+const styles = {
+  controlPanel: {
+    fontSize: "16px",
+    color: "black",
+    backgroundColor: "white",
+    borderRadius: "5px",
+  },
+  container: {
+    minHeight: "inherit",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+};

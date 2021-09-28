@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { Container, Heading, Box, Text, Image, Grid } from "theme-ui";
-import BannerImg from "assets/about/img-header.png";
+import BannerImg from "assets/about/padre.jpg";
 
 export default function moreHistory() {
   return (

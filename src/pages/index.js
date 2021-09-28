@@ -18,6 +18,7 @@ import MoreHistoryFounder from "../sections/more-history-founder";
 import VoluntariadoSection from "../sections/voluntariado-section";
 import Servicios from "../sections/servicios";
 import Donaciones from "../sections/donaciones";
+import PdfCards from "../sections/pdfs";
 
 export default function IndexPage() {
   return (
@@ -37,6 +38,7 @@ export default function IndexPage() {
         <Servicios />
         <TestimonialCard />
         <Donaciones />
+        <PdfCards />
       </Layout>
     </ThemeProvider>
   );

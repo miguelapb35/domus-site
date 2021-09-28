@@ -2,7 +2,7 @@
 import { jsx, Container, Box, Image } from "theme-ui";
 import TextFeature from "components/text-feature";
 
-import FeatureThumb from "assets/history/img-history.png";
+import FeatureThumb from "assets/donaciones/persons.jpg";
 import shapePattern from "assets/shape-pattern2.png";
 
 const data = {
